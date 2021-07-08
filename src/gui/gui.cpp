@@ -40,12 +40,9 @@
 #include "mainbar/setup_tile/display_settings/display_settings.h"
 #include "mainbar/setup_tile/move_settings/move_settings.h"
 #include "mainbar/setup_tile/time_settings/time_settings.h"
-#include "mainbar/setup_tile/update/update.h"
 #include "mainbar/setup_tile/wlan_settings/wlan_settings.h"
 #include "mainbar/setup_tile/bluetooth_settings/bluetooth_settings.h"
 #include "mainbar/setup_tile/sound_settings/sound_settings.h"
-#include "mainbar/setup_tile/gps_settings/gps_settings.h"
-#include "mainbar/setup_tile/sdcard_settings/sdcard_settings.h"
 #include "mainbar/setup_tile/watchface/watchface_manager.h"
 
 
@@ -100,11 +97,6 @@ void gui_setup( void ) {
     wlan_settings_tile_setup();
     bluetooth_settings_tile_setup();
     time_settings_tile_setup();
-    gps_settings_tile_setup();
-    #if defined( LILYGO_WATCH_HAS_SDCARD )
-        sdcard_settings_tile_setup();
-    #endif
-    update_tile_setup();
     utilities_tile_setup();
     sound_settings_tile_setup();
     watchface_manager_setup();

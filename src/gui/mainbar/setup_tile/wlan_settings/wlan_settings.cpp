@@ -281,24 +281,10 @@ void wlan_setup_tile_setup( uint32_t wifi_setup_tile_num ) {
     lv_obj_t *wifi_enabled_on_standby_onoff_cont = wf_add_labeled_switch( wifi_setup_tile, "enable on standby", &wifi_enabled_on_standby_onoff, wifictl_get_enable_on_standby(), wifi_enabled_on_standby_onoff_event_handler );
     lv_obj_align( wifi_enabled_on_standby_onoff_cont, wifi_autoon_onoff_cont, LV_ALIGN_OUT_BOTTOM_MID, 0, 5 );
 
-    lv_obj_t *wifi_webserver_onoff_cont = wf_add_labeled_switch( wifi_setup_tile, "enable webserver", &wifi_webserver_onoff, wifictl_get_webserver(), wifi_webserver_onoff_event_handler );
-    lv_obj_align( wifi_webserver_onoff_cont, wifi_enabled_on_standby_onoff_cont, LV_ALIGN_OUT_BOTTOM_MID, 0, 5 );
-
-    lv_obj_t *wifi_ftpserver_onoff_cont = wf_add_labeled_switch( wifi_setup_tile, "enable ftpserver", &wifi_ftpserver_onoff, wifictl_get_ftpserver(), wifi_ftpserver_onoff_event_handler );
-    lv_obj_align( wifi_ftpserver_onoff_cont, wifi_webserver_onoff_cont, LV_ALIGN_OUT_BOTTOM_MID, 0, 5 );
-
     lv_obj_t *wps_btn = lv_btn_create( wifi_setup_tile, NULL);
     lv_obj_set_event_cb( wps_btn, wps_start_event_handler );
-    lv_obj_align( wps_btn, wifi_ftpserver_onoff_cont, LV_ALIGN_OUT_BOTTOM_MID, 0, 0 );
     lv_obj_t *wps_btn_label = lv_label_create( wps_btn, NULL );
     lv_label_set_text( wps_btn_label, "start WPS");
-
-    #ifndef ENABLE_WEBSERVER
-        lv_obj_set_hidden( wifi_webserver_onoff_cont, true );
-    #endif
-    #ifndef ENABLE_FTPSERVER
-        lv_obj_set_hidden( wifi_ftpserver_onoff_cont, true );
-    #endif
 
     blectl_register_cb( BLECTL_MSG_JSON, wifi_setup_bluetooth_message_event_cb, "wifi settings" );
     wifictl_register_cb( WIFICTL_AUTOON, wifi_setup_autoon_event_cb, "wifi setup");

@@ -43,7 +43,6 @@
 #include "setup_tile/move_settings/move_settings.h"
 #include "setup_tile/display_settings/display_settings.h"
 #include "setup_tile/time_settings/time_settings.h"
-#include "setup_tile/update/update.h"
 
 
 mainbar_history_t mainbar_history;
